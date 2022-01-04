@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from django.db.models.query import QuerySet
+from .models import Task, Tag
+from rest_framework import serializers, viewsets
+from .serializers import TaskSerializer, TagSerializer
 
-# Create your views here.
+
+class TagViewSet(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+
+class TaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
